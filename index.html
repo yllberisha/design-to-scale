@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>System Design — an interactive course</title>
+    <meta name="description" content="An interactive system design course: each idea is an animated diagram you step through — load balancing, caching, sharding, consensus, queues and whole-system designs, from one server to millions of users." />
+    <meta name="author" content="Dilum Sanjaya" />
+    <link rel="canonical" href="https://designed-to-scale.vercel.app/" />
+
+    <!-- icons and the browser's toolbar colour (switched with the theme in src/main.js) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#f4ebe0" />
+
+    <!-- link previews: Open Graph (Facebook, LinkedIn, Slack, Discord, iMessage…) and X -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="System Design" />
+    <meta property="og:title" content="System Design — an interactive course" />
+    <meta property="og:description" content="An interactive system design course: each idea is an animated diagram you step through — load balancing, caching, sharding, consensus, queues and whole-system designs, from one server to millions of users." />
+    <meta property="og:url" content="https://designed-to-scale.vercel.app/" />
+    <meta property="og:image" content="https://designed-to-scale.vercel.app/og.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="System Design: an isometric diagram of users, a load balancer and three servers." />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@DilumSanjaya" />
+    <meta name="twitter:title" content="System Design — an interactive course" />
+    <meta name="twitter:description" content="An interactive system design course: each idea is an animated diagram you step through — load balancing, caching, sharding, consensus, queues and whole-system designs, from one server to millions of users." />
+    <meta name="twitter:image" content="https://designed-to-scale.vercel.app/og.jpg" />
+    <meta name="twitter:image:alt" content="System Design: an isometric diagram of users, a load balancer and three servers." />
+
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Course","name":"System Design","description":"An interactive system design course: each idea is an animated diagram you step through — load balancing, caching, sharding, consensus, queues and whole-system designs, from one server to millions of users.","url":"https://designed-to-scale.vercel.app/","image":"https://designed-to-scale.vercel.app/og.jpg","inLanguage":"en","isAccessibleForFree":true,"educationalLevel":"Beginner to advanced","author":{"@type":"Person","name":"Dilum Sanjaya","url":"https://x.com/DilumSanjaya"},"provider":{"@type":"Person","name":"Dilum Sanjaya","url":"https://x.com/DilumSanjaya"}}</script>
+    <script>
+      // apply a saved dark theme before the first paint, so the page never flashes light
+      try {
+        if (JSON.parse(localStorage.getItem('sdt:theme')) === 'dark') document.documentElement.dataset.theme = 'dark';
+      } catch (e) {}
+      // The language: ?lang= in the link, else the one the reader picked, else the first of the
+      // browser's languages the course speaks (es-MX → es, zh-TW → zh-Hant), else English.
+      // A language found this way isn't stored, so a later choice from the menu still wins.
+      // src/main.js (pickLang) reads the answer from data-start-lang.
+      try {
+        var LANGS = ["en","ar","de","el","es","fr","he","hi","id","it","ja","ko","nl","pl","pt","ru","tr","uk","vi","zh-Hans","zh-Hant"];
+        var fromBrowser = function () {
+          var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+          for (var i = 0; i < prefs.length; i++) {
+            var tag = String(prefs[i]).toLowerCase().replace(/_/g, '-');
+            var base = tag.split('-')[0];
+            var id =
+              base === 'zh' ? (/-(hant|tw|hk|mo)(-|$)/.test(tag) ? 'zh-Hant' : 'zh-Hans')
+              : base === 'yue' ? 'zh-Hant'
+              : base === 'iw' ? 'he' // old codes some systems still send
+              : base === 'in' ? 'id'
+              : base;
+            if (LANGS.indexOf(id) >= 0) return id;
+          }
+          return 'en';
+        };
+        var stored = null;
+        try {
+          stored = JSON.parse(localStorage.getItem('sdt:lang'));
+        } catch (e) {}
+        var lang = new URLSearchParams(location.search).get('lang') || stored || fromBrowser();
+        document.documentElement.dataset.startLang = lang;
+        // another language loads its words first: keep the page hidden until then (see boot() in src/main.js)
+        if (lang !== 'en') {
+          document.documentElement.dataset.langPending = '1';
+          if (lang === 'ar' || lang === 'he') document.documentElement.dir = 'rtl';
+        }
+      } catch (e) {}
+      // pick the layout before the first paint too (same rule as fitWindow in src/main.js)
+      var w = innerWidth, h = innerHeight;
+      document.documentElement.dataset.layout = w >= 1200 && h >= 560 ? 'desktop' : w >= 960 && h >= 600 ? 'tablet' : 'stack';
+    </script>
+    <script type="module" crossorigin src="/assets/index-BeXJu_A0.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CxX-BAVx.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <noscript>
+      <div style="max-width: 560px; margin: 15vh auto; padding: 0 24px; font: 15px/1.5 ui-monospace, Menlo, monospace; color: #1d1b18">
+        <h1 style="font-size: 24px">System Design</h1>
+        <p>An interactive system design course: each idea is an animated diagram you step through. It needs JavaScript to run — please turn it on and reload.</p>
+      </div>
+    </noscript>
+  </body>
+</html>
