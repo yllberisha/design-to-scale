@@ -9,9 +9,9 @@
     <link rel="canonical" href="https://designed-to-scale.vercel.app/" />
 
     <!-- icons and the browser's toolbar colour (switched with the theme in src/main.js) -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
     <meta name="theme-color" content="#f4ebe0" />
 
     <!-- link previews: Open Graph (Facebook, LinkedIn, Slack, Discord, iMessage…) and X -->
@@ -51,7 +51,7 @@
             var tag = String(prefs[i]).toLowerCase().replace(/_/g, '-');
             var base = tag.split('-')[0];
             var id =
-              base === 'zh' ? (/-(hant|tw|hk|mo)(-|$)/.test(tag) ? 'zh-Hant' : 'zh-Hans')
+              base === 'zh' ? (/(hant|tw|hk|mo)(-|$)/.test(tag) ? 'zh-Hant' : 'zh-Hans')
               : base === 'yue' ? 'zh-Hant'
               : base === 'iw' ? 'he' // old codes some systems still send
               : base === 'in' ? 'id'
@@ -76,8 +76,8 @@
       var w = innerWidth, h = innerHeight;
       document.documentElement.dataset.layout = w >= 1200 && h >= 560 ? 'desktop' : w >= 960 && h >= 600 ? 'tablet' : 'stack';
     </script>
-    <script type="module" crossorigin src="/assets/index-BeXJu_A0.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CxX-BAVx.css">
+    <script type="module" crossorigin src="./assets/index-BeXJu_A0.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CxX-BAVx.css">
   </head>
   <body>
     <div id="app"></div>
